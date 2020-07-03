@@ -19,7 +19,8 @@ function reverse($x) {
         
     }
     if ($respuesta > 2147483647){
-
+        $respuesta = '0';
+        $esNegativo = '';
     }
     $respuesta = $esNegativo.$respuesta;
     return (int) $respuesta;
