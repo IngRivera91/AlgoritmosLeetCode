@@ -1,5 +1,3 @@
-import java.util.List;
-
 // https://leetcode.com/problems/merge-two-sorted-lists/
 
 public class MergeTwoSortedLists {
@@ -21,7 +19,8 @@ public class MergeTwoSortedLists {
         ListNode actual = l1;
 
         while (actual != null) {
-            l2 = AddIntToList(l2, actual.val);
+            ListNode[] respuesta = AddIntToList(l2, actual.val);
+            l2 = respuesta[0];
             actual = actual.next;
         }
 
@@ -29,7 +28,7 @@ public class MergeTwoSortedLists {
         return l2;
     }
 
-    public static ListNode AddIntToList(ListNode lista, int numero){
+    public static ListNode[] AddIntToList(ListNode lista, int numero){
 
         ListNode actual = lista;
         ListNode objetivo = null;
@@ -46,10 +45,12 @@ public class MergeTwoSortedLists {
         if (objetivo != null) {
             ListNode nuevo = new ListNode(numero,objetivo.next);
             objetivo.next = nuevo;
-            return lista;
+            ListNode[] respuesta = {lista,nuevo};
+            return respuesta;
         } 
 
-        return new ListNode(numero,lista);
+        ListNode[] respuesta = {new ListNode(numero,lista),null};
+        return respuesta;
         
 
         
